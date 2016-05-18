@@ -28,7 +28,7 @@ app.get('/movies', function(req, res) {
 			}
             
          try{
-            var col = db.collection('movieapi');
+            var col = db.collection('Movies');
             col.find().toArray(function(err, result){
 
                 if(err){
@@ -60,7 +60,7 @@ app.get('/movies', function(req, res) {
 app.delete('/movies/:id', function(req, res) {
 
     MongoClient.connect(url, function(err, db){
-        var col = db.collection('movieapi');
+        var col = db.collection('Movies');
         col.remove({
             '_id' : ObjectID(req.params.id)
         }, function(err, result){
@@ -92,7 +92,7 @@ app.post('/movies', function(req, res) {
                 "error": "Internal Server Error"
             });
         }else {
-            var col = db.collection('movieapi');
+            var col = db.collection('Movies');
 
             col.insert(req.body, function(err, result){
                 if(err){
@@ -152,6 +152,4 @@ app.use('/',function(req, res) {
 })
 
 
-app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(process.env.PORT || 3000);
