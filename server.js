@@ -27,8 +27,7 @@ app.get('/movies', function(req, res) {
             });
 			}
             
-         try{
-            var col = db.collection('Movies');
+         else{            var col = db.collection('Movies');
             col.find().toArray(function(err, result){
 
                 if(err){
