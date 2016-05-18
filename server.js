@@ -26,9 +26,9 @@ app.get('/movies', function(req, res) {
                 'error':'Internal database error'
             });
 			}
-            var collection = db.collection('movieapi');
+            
          try{
-            var col = db.collection('movies');
+            var col = db.collection('movieapi');
             col.find().toArray(function(err, result){
 
                 if(err){
