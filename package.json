@@ -1,13 +1,13 @@
 {
-  "name": "Momongo",
+  "name": "NodeExamAPI",
   "version": "0.0.1",
-  "description": "Node Exam",
+  "description": "Node Exam API",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "alex",
+  "author": "Nicklas",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
