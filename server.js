@@ -8,7 +8,8 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var BodyParser = require('body-parser'); // middle
 
-var url = 'mongodb://nick2463:kea240993#@ds025232.mlab.com:25232/nodeandroid';
+var url = 'mongodb://nick2463:kea240993#@ds025782.mlab.com:25782/movieapi';
+
 
 app.use(BodyParser.urlencoded({
     extended: true
@@ -24,9 +25,9 @@ app.get('/movies', function(req, res) {
             res.json({
                 'error':'Internal database error'
             });
-
-            var collection = db.collection('movies');
-        } try{
+			}
+            var collection = db.collection('movieapi');
+         try{
             var col = db.collection('movies');
             col.find().toArray(function(err, result){
 
