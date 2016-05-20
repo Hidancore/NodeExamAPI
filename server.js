@@ -56,7 +56,7 @@ app.get('/movies', function(req, res) {
 
 });
 
-
+// route which is used to find a single element in the database
 app.get('/movies/:id', function(req, res) {
 
     MongoClient.connect(url, function(err, db){
@@ -69,7 +69,7 @@ app.get('/movies/:id', function(req, res) {
 			}
             
          else{            var col = db.collection('movies');
-            col.find({'_id' : ObjectID(req.params.id)}, function(err, result){
+            col.find({'_id' : req.params.id}, function(err, result){
 
                 if(err){
                     res.status(500);
