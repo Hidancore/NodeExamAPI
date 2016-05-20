@@ -29,6 +29,7 @@ app.get('/movies', function(req, res) {
                 'error':'Internal database error'
             });
 			}
+
             
          else{            var col = db.collection('movies');
             col.find().toArray(function(err, result){
@@ -55,6 +56,42 @@ app.get('/movies', function(req, res) {
 
 });
 
+
+app.find('/movies/:id', function(req, res) {
+
+    MongoClient.connect(url, function(err, db){
+        //Error in DB; return 500
+        if(err){
+            res.status(500);
+            res.json({
+                'error':'Internal database error'
+            });
+			}
+            
+         else{            var col = db.collection('movies');
+            col.find('_id').toArray(function(err, result){
+
+                if(err){
+                    res.status(500);
+                    res.json({
+                        'error': 'Internal database error'
+                    })
+                }else if (result !== null){
+                    res.status(200);
+                    res.json(result)
+                } else {
+                    res.status(404)
+                    res.json({
+                        "msg" : "empty"
+                    })
+                }
+
+                db.close();
+            });
+        }
+    });
+
+});
 
 
 // Route that handles creation of new user
