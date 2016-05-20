@@ -8,7 +8,6 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var BodyParser = require('body-parser'); // middle
-var util = require('util');
 
 
 
@@ -80,7 +79,7 @@ app.get('/movies/:id', function(req, res) {
                     })
                 }else if (result !== null){
                     res.status(200);
-                    res.json(util.inspect(result))
+                    res.json(JSON.stringify(result))
                 } else {
                     res.status(404)
                     res.json({
