@@ -30,7 +30,7 @@ app.get('/movies', function(req, res) {
             });
 			}
             
-         else{            var col = db.collection('movies');
+         else{            var col = db.collection('moviestwo');
             col.find().toArray(function(err, result){
 
                 if(err){
@@ -62,7 +62,7 @@ app.get('/movies', function(req, res) {
 app.delete('/movies/:id', function(req, res) {
 
     MongoClient.connect(url, function(err, db){
-        var col = db.collection('movies');
+        var col = db.collection('moviestwo');
         col.remove({
             '_id' : ObjectID(req.params.id)
         }, function(err, result){
