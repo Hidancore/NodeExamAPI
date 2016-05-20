@@ -69,7 +69,7 @@ app.get('/movies/:id', function(req, res) {
 			}
             
          else{            var col = db.collection('movies');
-            col.find({'_id' : req.params.id}, function(err, result){
+            col.find({'_id' : ObjectID(req.params.id)}, function(err, result){
 
                 if(err){
                     res.status(500);
