@@ -57,7 +57,7 @@ app.get('/movies', function(req, res) {
 });
 
 
-app.find('/movies/:id', function(req, res) {
+app.get('/movies/:id', function(req, res) {
 
     MongoClient.connect(url, function(err, db){
         //Error in DB; return 500
