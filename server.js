@@ -10,6 +10,7 @@ var ObjectId = require('mongodb').ObjectID;
 var BodyParser = require('body-parser'); // middle
 
 
+
 var url = 'mongodb://nick2463:kea240993#@ds025782.mlab.com:25782/movieapi';
 
 app.use(cors());
@@ -69,7 +70,7 @@ app.get('/movies/:id', function(req, res) {
 			}
             
          else{            var col = db.collection('movies');
-            col.find({'_id' : ObjectID(req.params.id)}, function(err, result){
+            col.find({'_id' : ObjectId(req.params.id)}, function(err, result){
 
                 if(err){
                     res.status(500);
@@ -101,7 +102,7 @@ app.delete('/movies/:id', function(req, res) {
     MongoClient.connect(url, function(err, db){
         var col = db.collection('movies');
         col.remove({
-            '_id' : ObjectID(req.params.id)
+            '_id' : ObjectId(req.params.id)
         }, function(err, result){
             if(err){
                 res.status(500);
