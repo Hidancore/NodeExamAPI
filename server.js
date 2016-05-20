@@ -70,7 +70,7 @@ app.get('/movies/:id', function(req, res) {
 			}
             
          else{            var col = db.collection('movies');
-            col.find({'_id' : ObjectId(req.params.id)}, function(err, result){ //prob
+            col.findOne({'_id' : ObjectId(req.params.id)}, function(err, result){ //prob
 
                 if(err){
                     res.status(500);
@@ -79,7 +79,7 @@ app.get('/movies/:id', function(req, res) {
                     })
                 }else if (result !== null){
                     res.status(200);
-                    res.json(JSON.stringify(result))
+                    res.json(result);
                 } else {
                     res.status(404)
                     res.json({
